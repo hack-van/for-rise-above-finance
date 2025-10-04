@@ -11,9 +11,9 @@ import { generateReport } from "@/hooks/report";
 const TOTAL_QUESTIONS = 30;
 
 export default function Assessment() {
-  const [, setLocation] = useLocation();
   const [showInput, setShowInput] = useState(true);
   const [reportLink, setReportLink] = useState<string | null>(null);
+  const [reportLinkLoading, setReportLinkLoading] = useState<boolean>(false);
   const { messages, addMessage } = useConversation();
 
   const [isTyping, setIsTyping] = useState(false);
@@ -60,8 +60,13 @@ export default function Assessment() {
               isUser={msg.role === "user"}
             />
           ))}
-          {reportLink && (
-            <MessageBubble message={reportLink} isFile isUser={false} />
+          {(reportLink || reportLinkLoading) && (
+            <MessageBubble
+              message={reportLink ?? ""}
+              loading={reportLinkLoading}
+              isFile
+              isUser={false}
+            />
           )}
           {isTyping && (
             <MessageBubble message="" isUser={false} isTyping={true} />
@@ -80,13 +85,22 @@ export default function Assessment() {
                 messages.filter((m) => m.role === "user").length + 1 >=
                 TOTAL_QUESTIONS;
               if (isConversationDone) {
-                setShowInput(false);
-                const { url } = await generateReport();
-                addMessage({
-                  prompt: `Thank you for completing the assessment! We are currently generating your report. It will be available for download shortly.`,
-                  role: "assistant",
-                });
-                setReportLink(url);
+                (async () => {
+                  // do not await
+                  setShowInput(false);
+                  setReportLinkLoading(true);
+                  addMessage({
+                    prompt: `Thank you for completing the assessment! We are currently generating your report. It will be available for download shortly.`,
+                    role: "assistant",
+                  });
+                  try {
+                    const { url } = await generateReport();
+
+                    setReportLink(url);
+                  } finally {
+                    setReportLinkLoading(false);
+                  }
+                })();
               } else {
                 addMessage({
                   prompt: response || "Sorry, something went wrong.",

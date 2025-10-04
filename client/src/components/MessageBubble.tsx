@@ -4,6 +4,7 @@ import file from "../assets/file.svg";
 interface MessageBubbleProps {
   message: string;
   isUser: boolean;
+  loading?: boolean;
   isTyping?: boolean;
   isFile?: boolean;
 }
@@ -11,6 +12,7 @@ interface MessageBubbleProps {
 export function MessageBubble({
   message,
   isUser,
+  loading,
   isTyping,
   isFile,
 }: MessageBubbleProps) {
@@ -46,22 +48,35 @@ export function MessageBubble({
             "bg-muted text-foreground"
           )}
           data-testid="message-file"
+          aria-busy={!!loading}
         >
-          <a
-            href={message}
-            target="_blank"
-            rel="noopener noreferrer"
-            download={message.split("/").pop() || undefined}
-            className="group flex items-center gap-3 text-lg leading-relaxed underline"
-            aria-label="Download your report"
-          >
-            <span className="inline-flex h-10 w-10 items-center justify-center rounded-md border bg-background">
-              <img src={file} alt="file icon" className="h-6 w-6" />
-            </span>
-            <span className="flex min-w-0 flex-col">
-              <span className="font-medium">Download your report</span>
-            </span>
-          </a>
+          {loading ? (
+            <div className="group flex items-center gap-3 text-lg leading-relaxed">
+              <span className="inline-flex h-10 w-10 items-center justify-center rounded-md border bg-background">
+                <span className="h-5 w-5 rounded-full border-2 border-muted-foreground/50 border-t-transparent animate-spin" />
+              </span>
+              <span className="flex min-w-0 flex-col">
+                <span className="font-medium">Preparing your report...</span>
+              </span>
+            </div>
+          ) : (
+            <a
+              style={{ pointerEvents: loading ? "none" : "auto" }}
+              href={message}
+              target="_blank"
+              rel="noopener noreferrer"
+              download={message.split("/").pop() || undefined}
+              className="group flex items-center gap-3 text-lg leading-relaxed underline"
+              aria-label="Download your report"
+            >
+              <span className="inline-flex h-10 w-10 items-center justify-center rounded-md border bg-background">
+                <img src={file} alt="file icon" className="h-6 w-6" />
+              </span>
+              <span className="flex min-w-0 flex-col">
+                <span className="font-medium">Download your report</span>
+              </span>
+            </a>
+          )}
         </div>
       </div>
     );
