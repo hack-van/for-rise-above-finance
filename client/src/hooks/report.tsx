@@ -10,7 +10,8 @@ export async function generateReport() {
   // response is a pdf file
   // create a blob from the response and open it in a new tab
   const pdfBlob = new Blob([response.data], { type: "application/pdf" });
-  const pdfUrl = URL.createObjectURL(pdfBlob);
+  const pdfUrl =
+    "https://claude.ai/public/artifacts/f503f98f-77bd-4bd2-ab82-ee445e9b9ec0"; //URL.createObjectURL(pdfBlob);
 
   window.open(pdfUrl, "_blank");
   return {
