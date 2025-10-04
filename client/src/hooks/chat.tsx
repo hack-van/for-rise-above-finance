@@ -63,16 +63,18 @@ export async function sendMessage(message: string) {
     messages: [...state.messages, { prompt: message, role: "user" }],
   }));
   const api = await getAPI();
-  /*const response = await api.post<{
-    message: string;
-  }>("/chat", {
+  const response = await api.post<{
+    reply: string;
+    action: string;
+  }>("/engine/next", {
+    mode: "neutral",
     messages: useConversation.getState().messages,
   });
-  const assistantMessage = response.data?.message;
-  */
+  const assistantMessage = response.data?.reply;
+
   // wait for 1.5 seconds to simulate typing
-  await new Promise((resolve) => setTimeout(resolve, 1500));
+  //await new Promise((resolve) => setTimeout(resolve, 1500));
   //const assistantMessage = "This is a placeholder response from the assistant.";
-  const assistantMessage = fakeQuestions[assistantMessages];
+  //const assistantMessage = fakeQuestions[assistantMessages];
   return assistantMessage;
 }

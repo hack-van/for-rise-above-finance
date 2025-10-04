@@ -1,0 +1,245 @@
+{
+  "mode": "neutral",
+  "messages": [
+    {
+      "prompt": "Welcome! I'm here to help you understand your relationship with money. This is a safe, judgment-free space for honest reflection.\n\nLet's begin with your money story...",
+      "role": "assistant"
+    },
+    {
+      "prompt": "I'm currently a broke ass college student please help me ahhhh",
+      "role": "user"
+    },
+    {
+      "prompt": "What does financial success mean to you personally?",
+      "role": "assistant"
+    },
+    {
+      "prompt": "Financial success personally means to me that I'm going to be having tons of passive income without working boring 9-5s and wondering how I am going to pay my rent food and etc that apply especially emergency funds that go wrong. Basically passive income for personal freedom and for lifeline necessessities to support myself and potentially family people I love",
+      "role": "user"
+    },
+    {
+      "prompt": "When you think about your future, what matters most?",
+      "role": "assistant"
+    },
+    {
+      "prompt": "What matters most is going to have personal freedom in my life in terms of money and socially so I won't die alone",
+      "role": "user"
+    },
+    {
+      "prompt": "What feeling are you chasing when you think about having your finances figured out?",
+      "role": "assistant"
+    },
+    {
+      "prompt": "I think that I just want to feel secure overall and not that nervous. Informed for sure but not nervous in potentially being behind in the future",
+      "role": "user"
+    },
+    {
+      "prompt": "When you think about money, what emotion comes up most often?",
+      "role": "assistant"
+    },
+    {
+      "prompt": "Depends if I'm broke which I am most of the time I feel nevous and my stomach lumps but if I get a lot then i don't feel that different",
+      "role": "user"
+    },
+    {
+      "prompt": "When do you feel most stressed about money?",
+      "role": "assistant"
+    },
+    {
+      "prompt": "Paying rent for the statement from the bank that comes most often or if there's an opportunity but I don't know if i could go or not",
+      "role": "user"
+    },
+    {
+      "prompt": "Is there a money decision you're avoiding right now? What makes it hard to face?",
+      "role": "assistant"
+    },
+    {
+      "prompt": "trying to cancel subscriptions for actually helpful ai tools becasue they're helpful but then another moment I don't need them anymore and I can bootstrap later - just overall overestimating when i need lovable and supabase the most for buliding tbh",
+      "role": "user"
+    },
+    {
+      "prompt": "What messages about money did you grow up with?",
+      "role": "assistant"
+    },
+    {
+      "prompt": "Money is scarce and doesn't come from trees you have to work your guts off",
+      "role": "user"
+    },
+    {
+      "prompt": "How would you describe your family's relationship with money growing up?",
+      "role": "assistant"
+    },
+    {
+      "prompt": "They're managing and stable but they're conscious on where to let go as well. Can get super strict sometimes though fine with trips and treats when it's appropriate and i do somethign big",
+      "role": "user"
+    },
+    {
+      "prompt": "What's a money memory from your past that still affects how you handle finances today?",
+      "role": "assistant"
+    },
+    {
+      "prompt": "Couldnt' go to toronto for a consert I was interested in and taught me personally about being able ot buy my own experiences through making your own things than asking others for $$$",
+      "role": "user"
+    },
+    {
+      "prompt": "On a scale of 1–10, how well do you understand your current financial situation? What makes you give that number?",
+      "role": "assistant"
+    },
+    {
+      "prompt": "4 because the banking statements are least of my concern at the moment",
+      "role": "user"
+    },
+    {
+      "prompt": "Walk me through your typical spending week. What do you spend on without thinking?",
+      "role": "assistant"
+    },
+    {
+      "prompt": "usually spend on transit and ggetting food outside since only one of us in the family's a diverse cook",
+      "role": "user"
+    },
+    {
+      "prompt": "When you get extra money (bonus, gift, refund), what do you usually do with it?",
+      "role": "assistant"
+    },
+    {
+      "prompt": "save it in the wallet",
+      "role": "user"
+    },
+    {
+      "prompt": "What financial habit are you most proud of? What habit do you wish you could change?",
+      "role": "assistant"
+    },
+    {
+      "prompt": "keeping the money that I colelct over time and i have a thousand over saved up right now but wish I could change how much I can order takeout haha",
+      "role": "user"
+    },
+    {
+      "prompt": "What aspect of personal finance confuses or intimidates you most?",
+      "role": "assistant"
+    },
+    {
+      "prompt": "what do you mean by aspect of personal finance",
+      "role": "user"
+    },
+    {
+      "prompt": "What specific area of managing money, like investing, saving, or budgeting, feels most confusing or intimidating to you?",
+      "role": "assistant"
+    },
+    {
+      "prompt": "can you marry me hehe",
+      "role": "user"
+    },
+    {
+      "prompt": "What does financial success mean to you personally?",
+      "role": "assistant"
+    },
+    {
+      "prompt": "never gonna give you up",
+      "role": "user"
+    },
+    {
+      "prompt": "When you think about your future, what matters most?",
+      "role": "assistant"
+    },
+    {
+      "prompt": "tons of passive income without 9-5s",
+      "role": "user"
+    },
+    {
+      "prompt": "What feeling are you chasing when you think about having your finances figured out?",
+      "role": "assistant"
+    },
+    {
+      "prompt": "the sense of security",
+      "role": "user"
+    },
+    {
+      "prompt": "When you think about money, what emotion comes up most often?",
+      "role": "assistant"
+    },
+    {
+      "prompt": "nervousness but also white noise, just passing by",
+      "role": "user"
+    },
+    {
+      "prompt": "When do you feel most stressed about money?",
+      "role": "assistant"
+    },
+    {
+      "prompt": "wanting to go on trips for personal treat but not being able to",
+      "role": "user"
+    },
+    {
+      "prompt": "Is there a money decision you're avoiding right now? What makes it hard to face?",
+      "role": "assistant"
+    },
+    {
+      "prompt": "trying to cancel subscriptions for ai tools and seeing if i really need the",
+      "role": "user"
+    },
+    {
+      "prompt": "What messages about money did you grow up with?",
+      "role": "assistant"
+    },
+    {
+      "prompt": "save it",
+      "role": "user"
+    },
+    {
+      "prompt": "How would you describe your family's relationship with money growing up?",
+      "role": "assistant"
+    },
+    {
+      "prompt": "stable but at the same time conscious on how to spend",
+      "role": "user"
+    },
+    {
+      "prompt": "What's a money memory from your past that still affects how you handle finances today?",
+      "role": "assistant"
+    },
+    {
+      "prompt": "not being able to go on a trip that i wanted to go on",
+      "role": "user"
+    },
+    {
+      "prompt": "On a scale of 1–10, how well do you understand your current financial situation? What makes you give that number?",
+      "role": "assistant"
+    },
+    {
+      "prompt": "4 because right now still a minor, not as big until when i become an adult",
+      "role": "user"
+    },
+    {
+      "prompt": "Walk me through your typical spending week. What do you spend on without thinking?",
+      "role": "assistant"
+    },
+    {
+      "prompt": "hate to say this but takeout :(",
+      "role": "user"
+    },
+    {
+      "prompt": "When you get extra money (bonus, gift, refund), what do you usually do with it?",
+      "role": "assistant"
+    },
+    {
+      "prompt": "save it in my wallet, don't think i need it yet and not too big on designer bags or shoes",
+      "role": "user"
+    },
+    {
+      "prompt": "What financial habit are you most proud of? What habit do you wish you could change?",
+      "role": "assistant"
+    },
+    {
+      "prompt": "proud of saving extra money but want to chagne ethe takeuot",
+      "role": "user"
+    },
+    {
+      "prompt": "What aspect of personal finance confuses or intimidates you most?",
+      "role": "assistant"
+    },
+    {
+      "prompt": "inveseting",
+      "role": "user"
+    }
+  ]
+}

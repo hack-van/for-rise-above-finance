@@ -83,7 +83,7 @@ export default function Assessment() {
                 setShowInput(false);
                 const { url } = await generateReport();
                 addMessage({
-                  prompt: `Thank you for completing the assessment! You can now proceed to the next step. Here is your report.`,
+                  prompt: `Thank you for completing the assessment! We are currently generating your report. It will be available for download shortly.`,
                   role: "assistant",
                 });
                 setReportLink(url);
