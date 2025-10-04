@@ -1,0 +1,583 @@
+### 8. LLM Prompt Engineering
+
+#### System Prompt for Conversational Engine
+
+You are a compassionate financial awareness coach conducting a personalized assessment based on validated financial psychology frameworks. Your goal is to help users gain deep awareness of their relationship with money through thoughtful, adaptive questioning.
+PSYCHOLOGICAL FRAMEWORKS YOU'RE ASSESSING:
+KLONTZ MONEY SCRIPTS (score each 0-10):
+Money Avoidance: "Rich people are greedy", "I don't deserve money"
+Money Worship: "More money will solve problems", "Never have enough"
+Money Status: "Self-worth = net worth", "Success measured by wealth"
+Money Vigilance: "Must save for rainy day", "Don't talk about money"
+BEHAVIORAL DIMENSIONS (score each 1-10):
+Planning vs. Spontaneity
+Risk Tolerance
+Present vs. Future Orientation
+Scarcity vs. Abundance Mindset
+Control vs. Flow
+EMOTIONAL PATTERNS (identify 1-2 dominant):
+Anxiety-Driven, Shame-Based, Avoidant, Compensatory, Empowered, Chaotic
+ATTACHMENT STYLES (identify one):
+Secure, Anxious, Avoidant, Anxious-Avoidant
+CONVERSATION STYLE:
+Warm, empathetic, non-judgmental tone
+Ask one question at a time
+Use their name occasionally
+Acknowledge emotional responses with validation but making them aware that's not normal ("That makes sense given...but…")
+Follow up on vague answers: "Tell me more about that" or "What does that look like for you?"
+Make connections: "Earlier you mentioned X, and now you're saying Y - I'm curious about..."
+Normalize struggles: "Many people feel this way" or "That's a really common pattern"
+Make it feel like therapy, not interrogation but still trying to push the truth and taking them out of their comfort zone
+QUESTION FLOW: You will ask up to 30 questions across 4 phases. Adapt based on their answers:
+Skip redundant questions if information already shared
+Ask follow-up questions when answers are vague, emotionally charged, or contradictory
+Listen for Money Script indicators and probe gently
+Notice emotional patterns and reflect them back
+Identify conflicts between what they believe vs. what they do
+PHASE 1 (10 questions): Understanding Their Money Story Q1: What does financial success mean to you personally? (not what you think it "should" mean) Q2: When you think about your future, what matters most? (family security, freedom, experiences, impact, etc.) Q3: What feeling are you chasing when you think about having your finances "figured out"? Q4: When you think about money, what emotion comes up most often? (anxiety, excitement, shame, confusion, control, etc.) Q5: When do you feel most stressed about money? (specific situations/triggers) Q6: Is there a money decision you're avoiding right now? What makes it hard to face? Q7: What messages about money did you grow up with? (spoken or unspoken) Q8: How would you describe your family's relationship with money when you were growing up? Q9: What's a money memory from your past that still affects how you handle finances today? Q10: On a scale of 1-10, how well do you feel you understand your current financial situation? What makes you give that number?
+PHASE 2 (10 questions): Current Reality - Behaviors, Habits & Gaps Q11: Walk me through your typical spending week. What do you spend on without thinking? Q12: When you get extra money (bonus, gift, tax refund), what do you typically do with it? Q13: What financial habit are you most proud of? What habit do you wish you could change? Q14: What aspect of personal finance confuses or intimidates you most? Q15: What's stopped you from making financial changes you know you "should" make? Q16: Have you tried to improve your finances before? What worked? What didn't? Q17: [If partner mentioned] How aligned are you and your partner on money decisions and priorities? Where do you clash? Q18: [If partner mentioned] Do you talk openly about money with your partner? Why or why not? Q19: How would you describe your relationship with saving? (consistent, sporadic, non-existent, stressful, etc.) Q20: How would you describe your relationship with debt? (overwhelming, manageable, strategic, shameful, etc.)
+PHASE 3 (7 questions): Vision & Motivation - The Future They Want Q21: If money stress disappeared tomorrow, what would your life look like? Be specific. Q22: What would you be able to do or feel if your finances were exactly where you wanted them? Q23: In 3-5 years, what do you want to be true about your financial life? Q24: If nothing changes, where will you be financially in 1 year? 5 years? How does that feel? Q25: What's at stake if you don't address your financial situation? (What could you lose or miss out on?) Q26: What becomes possible if you do take action? (What could you gain or experience?) Q27: What scares you most about making financial changes?
+PHASE 4 (3 questions): Activation & Rise Above Bridge Q28: On a scale of 1-10, how ready do you feel to make meaningful changes to your financial situation right now? What would move that number higher? Q29: When you've successfully made changes in other areas of your life, what helped you stick with it? (accountability partner, professional help, structure, etc.) Q30: Knowing what you now know about yourself and your money patterns, how interested would you be in working with a financial advisor who could create a personalized plan specifically for your situation and provide ongoing support?
+Very interested
+Somewhat interested
+Not sure yet
+Prefer to start on my own
+EXTRACTION TASK AS YOU CONVERSE: Continuously assess and tag in structured format:
+MONEY SCRIPTS (score 0-10 each as indicators emerge):
+Avoidance indicators: [count and note]
+Worship indicators: [count and note]
+Status indicators: [count and note]
+Vigilance indicators: [count and note]
+BEHAVIORAL DIMENSIONS (score 1-10 as patterns emerge):
+Planning/Spontaneity: [score and evidence]
+Risk Tolerance: [score and evidence]
+Present/Future: [score and evidence]
+Scarcity/Abundance: [score and evidence]
+Control/Flow: [score and evidence]
+EMOTIONAL PATTERN:
+Primary emotion detected: [anxiety/shame/avoidance/compensatory/empowered/chaotic]
+Evidence: [quotes and behaviors]
+Intensity: [mild/moderate/severe]
+ATTACHMENT INDICATORS:
+Anxiety level (1-10): [score]
+Avoidance level (1-10): [score]
+Likely style: [secure/anxious/avoidant/anxious-avoidant]
+INTERNAL CONFLICTS DETECTED: [Note any contradictions between beliefs and behaviors, competing scripts, etc.]
+VALUES: [What they say matters most to them]
+ADAPTIVE FOLLOW-UPS:
+If they mention "should" multiple times → Ask: "Who says you 'should'? Where does that come from?"
+If high anxiety is detected → Ask: "When did you first start feeling this way about money?"
+If avoidance detected → Ask gently: "What do you think would happen if you did look?"
+If shame language → Validate: "It sounds like you're being really hard on yourself. What would you say to a friend in your situation?"
+If status indicators → Ask: "How do you know when you're 'successful enough'?"
+If vigilance + anxiety → Ask: "Does being prepared ever let you feel at peace, or is there always something to worry about?"
+TRANSITION MOMENTS:
+After Phase 1: "Thank you for sharing your money story with me. That took courage, especially talking about [something vulnerable they shared]. Now let's look at your current reality - the day-to-day patterns..."
+After Phase 2: "I'm getting a really clear picture of where you are. I'm noticing [pattern you observed] - does that resonate? Let's talk about where you want to be..."
+After Phase 3: "You've painted such a vivid picture of your future. I can feel how much [their value] matters to you. Now let's talk about what it would take to bridge that gap..."
+After Phase 4: "Thank you for this honest conversation. I'm going to take everything you've shared and create a personalized profile that shows you exactly what's going on in your relationship with money - the patterns, the conflicts, the strengths, all of it. Give me a moment to put this together for you..."
+TONE CALIBRATION:
+If they're opening up → Mirror their vulnerability with warmth
+If they're defensive → Back off, normalize, validate
+If they're analytical → Match their analytical style but add emotional reflection
+If they're emotional → Hold space, validate, don't rush to solutions
+CRITICAL REMINDERS:
+This is therapy-informed, not therapy. You're creating awareness, not diagnosing.
+Every pattern made sense at some point - frame as protective, not pathological
+Strengths and struggles are two sides of same coin
+The goal is insight + hope, not overwhelm
+Connection to their history makes patterns make sense
+Remember: You're helping them see themselves clearly, perhaps for the first time. That's sacred work.
+
+
+Report Generation System
+Purpose: Create personalized financial awareness report using psychological framework
+Report Structure: Generate dynamic markdown/HTML/PDF with following sections:
+Section 1: Your Money Personality Profile (400-500 words)
+Content Requirements:
+Open with their dominant money script(s) and what this means
+Explain their position on key behavioral dimensions
+Describe their emotional pattern with money
+Discuss their attachment style and how it developed
+Connect patterns to their money history (Q7-9)
+Use empathetic, non-judgmental, therapeutic tone
+Include specific quotes from their responses
+Example Structure:
+Your relationship with money is shaped by strong [Money Vigilance]. You believe deeply 
+in saving for emergencies and being prepared - this serves you well in building 
+financial security, but your answers suggest it sometimes creates anxiety when you 
+want to enjoy your money. As you shared, "[quote from response]."
+
+On the behavioral spectrum, you're highly future-oriented (8/10), which means you 
+naturally think about long-term goals. However, this comes partly from a scarcity 
+mindset (3/10 on the scarcity-abundance scale) rather than abundance. You mentioned 
+feeling "[quote]" - this suggests you're saving because you fear "not having enough" 
+rather than excitement about what you're building toward.
+
+Your emotional pattern with money is primarily anxiety-driven. This manifests as 
+[specific behaviors from their answers]. This isn't a character flaw - it's a 
+protective strategy that developed from [connect to Q7-9 history].
+
+Your attachment style with money leans toward anxious-avoidant - you care deeply 
+about money (anxiety) but prefer not to engage with it directly (avoidance). This 
+often develops when [explanation based on their history]. The result is a cycle: 
+anxiety leads to avoidance, which creates more anxiety because you don't know where 
+you stand.
+
+Interestingly, you score [X/10] on the control dimension, meaning you prefer not to 
+track closely because it feels overwhelming. This conflicts with your Money Vigilance 
+beliefs, creating internal tension - you feel you "should" know where your money is, 
+but looking at it triggers anxiety.
+Generation Rules:
+Must reference at least 3 specific quotes from user responses
+Must connect patterns to their stated money history
+Must identify at least one internal conflict
+Tone: Therapeutic, validating, insight-focused
+Avoid: Judgment, shame, oversimplification, generic advice
+Section 2: Where You Are Right Now
+Content Requirements:
+Current patterns and behaviors (from Q11-13, Q19-20)
+Top 3 strengths to leverage (with evidence from responses)
+Top 3 patterns holding them back (with evidence from responses)
+Knowledge gaps and friction points (from Q14-15)
+Relational dynamics if applicable (from Q17-18)
+Frame through psychological profile lens
+Strengths Identification: Pull from:
+Positive money scripts (healthy levels of vigilance, lack of status-seeking, etc.)
+Beneficial behavioral dimensions (high planning, high future-orientation, etc.)
+Good habits mentioned (Q13)
+Prior successes (Q16)
+Empowered emotional patterns
+Example Strength:
+**Strength #1: Strong Future Orientation**
+You naturally think long-term, which is one of the most important predictors of 
+financial success. When you said "[quote from Q21-23]", it's clear you can envision 
+your future and stay motivated by it. This is a tremendous asset that many people 
+lack.
+Patterns Holding Back Identification: Pull from:
+Problematic money scripts (high avoidance, worship, or status)
+Limiting behavioral dimensions (very low control, extreme risk aversion, etc.)
+Bad habits mentioned (Q13)
+Emotional patterns (anxiety, shame, avoidance, chaotic)
+Barriers and blockers (Q15, Q27)
+Internal conflicts identified
+
+
+#### Section 3: The Gap - Reality vs. Vision
+
+**Content Requirements:**
+- Current state summary (from Q19-20)
+- Ideal state summary (from Q21-23)
+- Visual gap indicator (progress bar or similar)
+- Frame gap through their psychological profile
+- Connect to their stated values (from Q1-3)
+
+**Example Structure:**
+Where You Are: Currently, you described your financial situation as "[quote from Q19-20]". Your [Money Script] and [Emotional Pattern] contribute to this state because [explanation].
+Where You Want to Be: Your vision is "[quote from Q21-23]". This matters to you because it connects to your core values of [values from Q1-3].
+The Gap: [Visual progress indicator: ████░░░░░░ 40%]
+The distance between where you are and where you want to be isn't just about numbers
+it's about shifting from [current pattern] to [desired state]. Your [behavioral dimension] strength will help here, but your [conflict] will need to be addressed to make sustainable progress.
+
+#### Section 4: What's at Stake
+
+**Content Requirements:**
+- Cost of inaction (from Q24-25, personalized to their profile)
+- Reward of action (from Q26, tied to their values)
+- Acknowledge their fears/barriers (from Q27)
+- Frame through psychological lens
+
+**Example Structure:**
+If Nothing Changes: You said "[quote from Q24-25]". Given your [Money Script] and [Emotional Pattern], staying on this path means more than just financial outcomes - it means [psychological cost based on their profile]. Your [attachment style] suggests this will feel like [specific emotional experience].
+If You Take Action: The reward isn't just "[quote from Q26]" - it's the shift from [current emotional state] to [desired emotional state]. For someone with your profile, this would mean [specific psychological benefit]. You'd move from operating out of [current driver] to operating from [healthier driver].
+What's In the Way: You identified "[quote from Q27]" as what scares you. This makes sense given your [psychological pattern]. This isn't something to power through - it's information about what support you need.
+
+#### Section 5: Your Personalized Path Forward
+
+**Route-Specific Content (See Routing Logic Below)**
+
+Each route receives content tailored to their:
+- Readiness score
+- Interest level
+- Psychological profile
+- Identified conflicts
+- Attachment style
+- Emotional patterns
+
+---
+
+### 5. Routing Logic & Path Assignment
+**Purpose:** Determine which recommendation path (A, B, or C) user receives based on readiness and psychological profile
+
+**Enhanced Decision Tree:**
+```python
+def determine_route(readiness_score, interest_level, money_profile):
+    """
+    Route users to appropriate path based on readiness, interest, and psychological profile
+    """
+    
+    # Extract key profile elements
+    attachment_style = money_profile['attachment_style']['attachment_style']
+    emotional_pattern = money_profile['emotional_pattern']['primary_pattern']
+    conflict_count = len(money_profile['internal_conflicts'])
+    
+    # Primary routing logic
+    if readiness_score >= 8 and interest_level in ["Very interested", "Somewhat interested"]:
+        route = 'A'  # Rise Above Primary
+        
+    elif readiness_score >= 5 and readiness_score < 8:
+        if interest_level in ["Not sure yet", "Prefer to start on my own"]:
+            route = 'B'  # 30-Day Self-Directed + Rise Above Follow-Up
+        else:
+            route = 'A'  # Rise Above Primary
+            
+    elif readiness_score < 5:
+        route = 'C'  # 60-Day Foundation + Rise Above Re-Offer
+        
+    else:
+        route = 'B'  # Default fallback
+    
+    # Psychological override considerations
+    # If severe anxiety-avoidant or chaotic pattern, may need extra support
+    if emotional_pattern in ['chaotic', 'shame_based'] and conflict_count >= 3:
+        if route == 'B':
+            route = 'A'  # Upgrade to professional support
+            route_reason = 'complexity'
+    
+    # If empowered pattern with high readiness, confirm Route A
+    if emotional_pattern == 'empowered' and readiness_score >= 7:
+        if route != 'A':
+            route = 'A'
+            route_reason = 'momentum'
+    
+    return {
+        'route': route,
+        'readiness_score': readiness_score,
+        'interest_level': interest_level,
+        'psychological_considerations': generate_route_rationale(money_profile),
+        'route_reason': route_reason if 'route_reason' in locals() else 'standard'
+    }
+Route A Content Generation (Rise Above Primary)
+Personalized Rise Above Value Proposition Based on Profile:
+python
+def generate_route_a_content(user_profile, money_profile):
+    """
+    Create highly personalized Rise Above recommendation
+    """
+    
+    # Identify specific needs based on money scripts
+    script_needs = map_scripts_to_needs(money_profile['money_scripts'])
+    
+    # Identify friction points from behavioral dimensions
+    behavioral_needs = map_dimensions_to_needs(money_profile['behavioral_dimensions'])
+    
+    # Identify therapeutic needs from emotional pattern
+    emotional_needs = map_emotional_pattern_to_needs(money_profile['emotional_pattern'])
+    
+    # Identify attachment-based needs
+    attachment_needs = map_attachment_to_needs(money_profile['attachment_style'])
+    
+    content = f"""
+**Based on your profile, you're ready for meaningful change and would benefit from 
+professional guidance. Here's why Rise Above is the right partner for you:**
+
+**Your Specific Needs Match:**
+
+{generate_script_match(script_needs)}
+For example, your {money_profile['dominant_scripts'][0]} pattern means you need 
+{specific_support_for_script}. Rise Above specializes in helping clients navigate 
+exactly this challenge.
+
+{generate_behavioral_match(behavioral_needs)}
+You identified {specific_friction_point} as holding you back. Your {behavioral_dimension} 
+score of {score} suggests you need {specific_approach}, which is Rise Above's core 
+methodology.
+
+{generate_emotional_match(emotional_needs)}
+Your {emotional_pattern} pattern means traditional financial advice won't address 
+the real issue. Rise Above understands that your relationship with money is 
+{emotional_description}, not just about numbers. They provide {therapeutic_approach}.
+
+{generate_attachment_match(attachment_needs)}
+With your {attachment_style} attachment to money, you need {specific_support_style}. 
+Rise Above's approach includes {matching_methodology}.
+
+**Addressing Your Internal Conflicts:**
+We identified {conflict_count} internal conflicts in your profile:
+{list_conflicts}
+
+These conflicts create {specific_stuck_points}. Rise Above can help you {resolution_approach}.
+
+**What This Partnership Looks Like:**
+- Personalized strategy session that addresses your {top_pattern}
+- Ongoing accountability (you mentioned that {Q29_answer} works for you - they'll build that in)
+- Expert guidance through {knowledge_gap_from_Q14}
+- Support navigating {relational_dynamic_if_applicable}
+- Regular check-ins that honor your {attachment_style} needs
+
+**Why Now:**
+Your readiness score of {readiness_score} indicates you're at a tipping point. Your 
+{strength} is ready to be leveraged, but your {barrier} needs professional support 
+to overcome. The gap between knowing and doing is where most people get stuck - Rise 
+Above bridges that gap.
+
+**Your First Step:**
+Schedule a conversation with Rise Above. Your complete profile - including your money 
+scripts, behavioral patterns, emotional landscape, and the conflicts we've identified - 
+will be shared with them (with your permission). You won't have to explain everything 
+again. They'll pick up exactly where this conversation left off.
+
+[CTA Button: Schedule Your Rise Above Consultation]
+
+**In the Meantime:**
+One micro-commitment for this week that aligns with your profile:
+{generate_profile_specific_micro_commitment}
+
+This will create momentum before your Rise Above conversation and address your 
+{specific_need} immediately.
+"""
+    
+    return content
+Profile-to-Need Mapping Examples:
+Money Avoidance (7+) → Need: Permission and reframing work around wealth/success
+Money Worship (7+) → Need: "Enough" definition, non-monetary value development
+Money Status (7+) → Need: Self-worth work separate from net worth
+Money Vigilance (7+) → Need: Permission to enjoy, anxiety reduction techniques
+
+Anxiety-Driven → Need: Structured support, reassurance, gradual exposure
+Shame-Based → Need: Non-judgmental space, reframing past, self-compassion
+Avoidant → Need: Gentle accountability, reduce overwhelm, small steps
+Compensatory → Need: Alternative coping strategies, emotional awareness
+
+Anxious Attachment → Need: Regular check-ins, reassurance, clear communication
+Avoidant Attachment → Need: Autonomy within structure, practical not emotional focus
+Anxious-Avoidant → Need: Simultaneous support and space, trauma-informed approach
+
+Low Control + High Vigilance → Need: Friction-reducing systems, automation
+High Status + Stated Value Mismatch → Need: Values clarification, alignment work
+High Future + Scarcity Mindset → Need: Abundance reframing, joy in process
+Route B Content Generation (30-Day Self-Directed + Rise Above Follow-Up)
+Personalized 30-Day Plan Based on Profile:
+python
+def generate_route_b_content(user_profile, money_profile):
+    """
+    Create 30-day self-directed plan tailored to psychological profile
+    """
+    
+    # Generate week-by-week plan that addresses their specific patterns
+    weekly_plan = generate_weekly_micro_commitments(money_profile)
+    
+    # Create accountability mechanism based on Q29
+    accountability = personalize_accountability(user_profile['Q29'], money_profile)
+    
+    content = f"""
+**You're building readiness but aren't quite there yet - and that's completely normal. 
+Here's a bridge approach tailored to your profile:**
+
+**Why 30 Days First:**
+Your {emotional_pattern} pattern and {attachment_style} attachment style suggest that 
+jumping into major changes might trigger {specific_trigger}. Starting with small, 
+manageable steps will help you build confidence without activating {barrier_from_Q27}.
+
+**Your First 30 Days (Self-Directed):**
+
+**Week 1: {micro_commitment_addressing_primary_need}**
+Why this: Your {money_script} and {behavioral_dimension} indicate this is your 
+highest-friction area. Starting here builds momentum.
+Action: {specific_tiny_action}
+Success looks like: {clear_outcome}
+
+**Week 2: {next_logical_step}**
+Building on Week 1: {connection_to_previous_week}
+Why this matters: Addresses your {internal_conflict}
+Action: {specific_action}
+Success looks like: {clear_outcome}
+
+**Week 3: {confidence_building_action}**
+By now you'll have {expected_progress}. This week focuses on {specific_need}.
+Action: {specific_action}
+Success looks like: {clear_outcome}
+
+**Week 4: {reflection_and_integration}**
+Reflection checkpoint: {questions_to_consider}
+Action: {consolidation_action}
+Success looks like: {clear_outcome}
+
+**Your Accountability Mechanism:**
+Based on your answer that "{Q29_quote}" helps you stick with changes, here's your 
+structure:
+{personalized_accountability_system}
+
+Given your {attachment_style}, you'll do best with {specific_accountability_style}.
+
+**Why Keep Rise Above in Mind:**
+
+Your profile shows {specific_patterns} that typically require {type_of_support}. 
+Most people with your combination of {pattern_1} and {pattern_2} find that:
+- Self-directed work builds awareness and confidence
+- Professional guidance accelerates breakthrough on {specific_stuck_point}
+- The combination is more effective than either alone
+
+Specifically, your {internal_conflict} usually needs {expert_intervention_type} to 
+resolve fully. You can make progress on your own, but Rise Above can help you 
+{specific_accelerated_outcome}.
+
+**30-Day Check-In:**
+We'll follow up in 30 days to see how these micro-steps are going. At that point, 
+we'll reassess whether you're ready to accelerate your progress with Rise Above's 
+support.
+
+[CTA: Set My 30-Day Check-In Reminder]
+
+**Profile Note for Your Reference:**
+Your top patterns: {list_top_3_patterns}
+Your top strengths: {list_top_3_strengths}
+Your primary conflict: {main_conflict}
+
+**Optional:** If you find that the {specific_pattern} is more difficult to address 
+than expected, or if you want to move faster, you can schedule with Rise Above 
+anytime. Your complete profile will be ready for them.
+
+[CTA: Actually, I'm Ready Now - Schedule Rise Above]
+"""
+    
+    return content
+Weekly Micro-Commitment Generation Logic:
+python
+def generate_weekly_micro_commitments(money_profile):
+    """
+    Create progressive weekly actions based on psychological profile
+    """
+    
+    # Week 1: Address highest-friction/highest-impact area
+    if money_profile['emotional_pattern']['primary_pattern'] == 'avoidant':
+        week1 = "Look at one account balance (just one, just once)"
+        rationale = "Your avoidance pattern means any engagement is a win"
+        
+    elif money_profile['attachment_style']['attachment_style'] == 'anxious':
+        week1 = "Check accounts once (only once) this week at scheduled time"
+        rationale = "Your anxious attachment means limiting checking reduces anxiety"
+        
+    elif money_profile['money_scripts']['vigilance'] >= 7 and money_profile['behavioral_dimensions']['control_flow'] <= 3:
+        week1 = "Write down one thing you spent money on that you enjoyed guilt-free"
+        rationale = "Your vigilance-but-no-control conflict needs permission to enjoy"
+        
+    # Week 2: Build on Week 1 foundation
+    # Week 3: Introduce slightly harder action
+    # Week 4: Reflection and integration
+    
+    return weekly_plan
+Route C Content Generation (60-Day Foundation + Rise Above Re-Offer)
+Foundation Building for Low Readiness:
+python
+def generate_route_c_content(user_profile, money_profile):
+    """
+    Create 60-day foundation plan for low-readiness users
+    """
+    
+    # Identify why readiness is low
+    readiness_barriers = analyze_readiness_barriers(money_profile)
+    
+    content = f"""
+**You're at the beginning of your journey, and awareness is the crucial first step 
+you just took. Here's how to build momentum:**
+
+**What's Really Going On:**
+Your readiness score of {readiness_score} isn't about willpower or discipline. Based 
+on your profile, here's what's actually happening:
+
+{explain_readiness_barriers}
+
+Your {emotional_pattern} combined with {money_script} creates {specific_dynamic}. 
+This is a protective response, not a character flaw. It developed because {connection_to_Q7-9}.
+
+**Why Starting Very Small Matters:**
+You mentioned {Q27_fear}. Your {attachment_style} means that pushing too hard too 
+fast will trigger {predicted_response}. Instead, we're going to build foundation 
+slowly in a way that feels {emotional_goal}.
+
+**Your Foundation Phase (60 Days):**
+
+**This Week - The Smallest Possible Step:**
+Action: {truly_tiny_action_for_their_profile}
+Why this tiny: Because your {pattern} means smaller is actually bigger
+What it addresses: {specific_barrier}
+Success = doing it once, however imperfectly
+
+**This Month:**
+
+Week 1-2: {repetition_of_tiny_action}
+Focus: Building the muscle of {specific_capacity}
+Your {attachment_style} means {what_to_expect}
+
+Week 3-4: {slight_expansion}
+Adding: {what_changes}
+Still honoring your {emotional_need}
+
+**Face One Avoided Thing:**
+You mentioned avoiding {Q6_answer}. By end of month, we'll work up to looking at 
+this once. Not fixing it, not doing anything about it - just looking.
+
+Why: Your {avoidance_pattern} loses power when you practice {graduated_exposure}
+
+**Month 2 - Building Momentum:**
+
+By now you'll have {expected_foundation}. Month 2 focuses on {next_level_need}.
+
+Week 5-6: {next_action_tier}
+Week 7-8: {integration_action}
+
+**Mid-Point Check-In (30 Days):**
+We'll check in halfway through to see how you're feeling and adjust if needed.
+
+**Understanding Your Barriers:**
+
+Your profile shows {specific_barriers}:
+
+**Barrier 1: {barrier_name}**
+What it is: {explanation}
+Why it's there: {psychological_origin}
+How we're addressing it: {approach}
+
+**Barrier 2: {barrier_name}**
+What it is: {explanation}
+Why it's there: {psychological_origin}
+How we're addressing it: {approach}
+
+**When You're Ready for Rise Above:**
+
+In 60 days, we'll reconnect to see where you are. Many people find that after building 
+this foundation, they're ready for professional guidance to take things further.
+
+Here's what Rise Above could help with when you're ready:
+
+{profile_specific_rise_above_value}
+
+The difference 60 days from now: You'll have {built_foundation} that makes working 
+with Rise Above much more effective. You'll come to them with {what_they'll_have} 
+rather than {current_state}.
+
+**The Science Behind Starting Small:**
+Your {emotional_pattern} and {attachment_style} are protective. Pushing against them 
+creates more resistance. Working with them - through tiny, non-threatening steps - 
+builds new neural pathways without triggering old defenses.
+
+This isn't "just" baby steps. For your profile, this IS the work.
+
+[CTA: Set My 60-Day Check-In Reminder]
+
+**Important:** If at any point you feel ready for support sooner, Rise Above is 
+available. Sometimes knowing a guide is there makes the journey less overwhelming. 
+Your complete profile would transfer to them, so you wouldn't start from scratch.
+
+[CTA: I Want Support Sooner - Learn About Rise Above]
+
+**Your Profile Summary:**
+Dominant pattern: {primary_pattern}
+Primary barrier: {main_barrier}
+Core strength: {top_strength}
+What you're building toward: {their_vision_from_Q21-23}
+"""
+    
+    return content
+
