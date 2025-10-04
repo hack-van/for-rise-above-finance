@@ -6,13 +6,17 @@ import { Button } from "@/components/ui/button";
 import { useLocation } from "wouter";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { sendMessage, useConversation } from "@/hooks/chat";
+import { generateReport } from "@/hooks/report";
+
+const TOTAL_QUESTIONS = 30;
 
 export default function Assessment() {
   const [, setLocation] = useLocation();
-  const { messages } = useConversation();
+  const [showInput, setShowInput] = useState(true);
+  const [reportLink, setReportLink] = useState<string | null>(null);
+  const { messages, addMessage } = useConversation();
 
   const [isTyping, setIsTyping] = useState(false);
-  const [showInput, setShowInput] = useState(true);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   const scrollToBottom = () => {
@@ -23,56 +27,6 @@ export default function Assessment() {
     scrollToBottom();
   }, [messages, isTyping]);
 
-  /*const askQuestion = (questionIndex: number) => {
-    if (questionIndex >= mockQuestions.length) {
-      setIsTyping(true);
-      setTimeout(() => {
-        setIsTyping(false);
-        setMessages((prev) => [
-          ...prev,
-          {
-            text: "Thank you for this honest conversation. I'm going to take everything you've shared and create a personalized profile that shows you exactly what's going on in your relationship with money - the patterns, the conflicts, the strengths, all of it.\n\nGive me a moment to put this together for you...",
-            isUser: false,
-          },
-        ]);
-        setShowInput(false);
-
-        setTimeout(() => {
-          setLocation("/report");
-        }, 3000);
-      }, 1000);
-      return;
-    }
-
-    setIsTyping(true);
-    setTimeout(() => {
-      setIsTyping(false);
-      setMessages((prev) => [
-        ...prev,
-        {
-          text: mockQuestions[questionIndex].text,
-          isUser: false,
-        },
-      ]);
-    }, 800);
-  };*/
-
-  /*const handleSend = (message: string) => {
-    setMessages((prev) => [...prev, { text: message, isUser: true }]);
-    setCurrentQuestion((prev) => prev + 1);
-
-    setTimeout(() => {
-      askQuestion(currentQuestion + 1);
-    }, 1000);
-  };*/
-
-  /*const getCurrentPhase = () => {
-    if (currentQuestion < 3) return 1;
-    if (currentQuestion < 5) return 2;
-    if (currentQuestion < 7) return 3;
-    return 4;
-  };*/
-
   return (
     <div className="min-h-screen flex flex-col">
       <div className="absolute top-4 right-4 z-30">
@@ -80,12 +34,21 @@ export default function Assessment() {
       </div>
 
       <PhaseIndicator
-        //currentPhase={getCurrentPhase()}
-        currentPhase={1}
-        //questionNumber={Math.min(currentQuestion + 1, mockQuestions.length)}
-        questionNumber={1}
-        //totalQuestions={mockQuestions.length}
-        totalQuestions={10}
+        currentPhase={
+          // phase 1: 10 questions
+          messages.filter((m) => m.role === "user").length + 1 < 10
+            ? 1
+            : // phase 2: 10 questions
+            messages.filter((m) => m.role === "user").length + 1 < 20
+            ? 2
+            : // phase 3: 7 questions
+            messages.filter((m) => m.role === "user").length + 1 < 27
+            ? 3
+            : // phase 4: 3 questions
+              4
+        }
+        questionNumber={messages.filter((m) => m.role === "user").length + 1}
+        totalQuestions={TOTAL_QUESTIONS}
       />
 
       <div className="flex-1 overflow-y-auto">
@@ -97,6 +60,9 @@ export default function Assessment() {
               isUser={msg.role === "user"}
             />
           ))}
+          {reportLink && (
+            <MessageBubble message={reportLink} isFile isUser={false} />
+          )}
           {isTyping && (
             <MessageBubble message="" isUser={false} isTyping={true} />
           )}
@@ -107,7 +73,29 @@ export default function Assessment() {
       {showInput && (
         <ChatInput
           onSend={async (message) => {
-            await sendMessage(message);
+            setIsTyping(true);
+            try {
+              const response = await sendMessage(message);
+              const isConversationDone =
+                messages.filter((m) => m.role === "user").length + 1 >=
+                TOTAL_QUESTIONS;
+              if (isConversationDone) {
+                setShowInput(false);
+                const { url } = await generateReport();
+                addMessage({
+                  prompt: `Thank you for completing the assessment! You can now proceed to the next step. Here is your report.`,
+                  role: "assistant",
+                });
+                setReportLink(url);
+              } else {
+                addMessage({
+                  prompt: response || "Sorry, something went wrong.",
+                  role: "assistant",
+                });
+              }
+            } finally {
+              setIsTyping(false);
+            }
           }}
           disabled={isTyping}
         />

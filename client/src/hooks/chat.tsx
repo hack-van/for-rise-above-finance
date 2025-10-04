@@ -9,6 +9,7 @@ export type Message = {
 
 export const useConversation = create<{
   messages: Array<Message>;
+  addMessage: (message: Message) => void;
 }>((set) => ({
   messages: [
     {
@@ -17,6 +18,8 @@ export const useConversation = create<{
       role: "assistant",
     },
   ],
+  addMessage: (message: Message) =>
+    set((state) => ({ messages: [...state.messages, message] })),
 }));
 
 export async function sendMessage(message: string) {
@@ -31,14 +34,8 @@ export async function sendMessage(message: string) {
   });
   const assistantMessage = response.data?.message;
   */
+  // wait 3 sec
+  await new Promise((resolve) => setTimeout(resolve, 3000));
   const assistantMessage = "This is a placeholder response from the assistant.";
-  if (assistantMessage) {
-    useConversation.setState((state) => ({
-      messages: [
-        ...state.messages,
-        { prompt: assistantMessage, role: "assistant" },
-      ],
-    }));
-  }
   return assistantMessage;
 }
