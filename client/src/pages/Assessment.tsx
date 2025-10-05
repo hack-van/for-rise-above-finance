@@ -16,11 +16,7 @@ export default function Assessment() {
   const { messages, addMessage, reset: resetConversation } = useConversation();
 
   const isCompleted =
-    messages.filter(
-      (m) =>
-        m.role === "assistant" &&
-        (!m.action || m.action === "ASK_NEXT_FALLBACK")
-    ).length >= TOTAL_QUESTIONS;
+    messages.filter((m) => m.role === "assistant").length > TOTAL_QUESTIONS;
 
   const [isTyping, setIsTyping] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
@@ -54,9 +50,7 @@ export default function Assessment() {
               4
         }
         questionNumber={Math.min(
-          messages.filter(
-            (m) => m.role === "assistant" && m.action === "ASK_NEXT_FALLBACK"
-          ).length + 1,
+          messages.filter((m) => m.role === "assistant").length,
           TOTAL_QUESTIONS
         )}
         totalQuestions={TOTAL_QUESTIONS}
@@ -84,9 +78,11 @@ export default function Assessment() {
             <MessageBubble message="" isUser={false} isTyping={true} />
           )}
           {isCompleted && (
-            <div className="mt-6 rounded-xl border border-zinc-200 bg-white p-6 shadow-sm dark:border-zinc-800 dark:bg-zinc-900">
-              <FinancialSelfAwarenessMap />
-            </div>
+            <>
+              <div className="mt-6 rounded-xl border border-zinc-200 bg-white p-6 shadow-sm dark:border-zinc-800 dark:bg-zinc-900">
+                <FinancialSelfAwarenessMap />
+              </div>
+            </>
           )}
           <div ref={messagesEndRef} />
         </div>
@@ -97,7 +93,10 @@ export default function Assessment() {
           onSend={async (message) => {
             setIsTyping(true);
             try {
-              const { message: response, action } = await sendMessage(message);
+              const { message: response } = await sendMessage(message);
+              const isCompleted =
+                messages.filter((m) => m.role === "assistant").length >=
+                TOTAL_QUESTIONS;
               if (isCompleted) {
                 (async () => {
                   // do not await
@@ -106,7 +105,6 @@ export default function Assessment() {
                   addMessage({
                     prompt: `Thank you for completing the assessment! We are currently generating your report. It will be available for download shortly.`,
                     role: "assistant",
-                    action: "END",
                   });
                   try {
                     const { url } = await generateReport();
@@ -120,7 +118,6 @@ export default function Assessment() {
                 addMessage({
                   prompt: response || "Sorry, something went wrong.",
                   role: "assistant",
-                  action: action,
                 });
               }
             } finally {

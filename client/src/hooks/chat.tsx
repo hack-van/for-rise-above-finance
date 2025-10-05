@@ -7,7 +7,6 @@ export type Role = "user" | "assistant";
 export type Message = {
   prompt: string;
   role: Role;
-  action?: string;
 };
 
 export const useConversation = create<{
@@ -95,7 +94,6 @@ export async function sendMessage(message: string) {
   const api = await getAPI();
   const response = await api.post<{
     reply: string;
-    action: string;
   }>("/engine/next", {
     mode: "neutral",
     messages: useConversation.getState().messages,
@@ -106,5 +104,5 @@ export async function sendMessage(message: string) {
   //await new Promise((resolve) => setTimeout(resolve, 1500));
   //const assistantMessage = "This is a placeholder response from the assistant.";
   //const assistantMessage = fakeQuestions[assistantMessages];
-  return { message: assistantMessage, action: response.data?.action };
+  return { message: assistantMessage };
 }
