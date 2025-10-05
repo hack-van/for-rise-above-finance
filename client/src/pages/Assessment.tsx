@@ -5,7 +5,7 @@ import { ChatInput } from "@/components/ChatInput";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { sendMessage, useConversation } from "@/hooks/chat";
 import { generateReport } from "@/hooks/report";
-import MetricReportRendering from "@/components/MetricReportRendering";
+import FinancialSelfAwarenessMap from "@/components/FinancialSelfAwarenessMap";
 
 const TOTAL_QUESTIONS = 30;
 
@@ -75,7 +75,7 @@ export default function Assessment() {
           )}
           {(isCompleted || true) && (
             <div className="mt-6 rounded-xl border border-zinc-200 bg-white p-6 shadow-sm dark:border-zinc-800 dark:bg-zinc-900">
-              <MetricReportRendering />
+              <FinancialSelfAwarenessMap />
             </div>
           )}
           <div ref={messagesEndRef} />
