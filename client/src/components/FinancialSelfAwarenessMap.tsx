@@ -153,7 +153,7 @@ export default function FinancialSelfAwarenessMap() {
         animate={{ opacity: 1, y: 0 }}
         className="grid grid-cols-12 gap-6"
       >
-        {/* Left column: Money Scripts (radar) & Emotional */}
+        {/* Money Scripts (radar) & Emotional */}
         <div className="col-span-12 bg-white rounded-2xl p-12 shadow-sm border border-slate-100">
           <div className="flex items-start gap-4">
             <div className="w-75 h-75">
@@ -161,9 +161,9 @@ export default function FinancialSelfAwarenessMap() {
                 outerRadius={75}
                 width={265}
                 height={265}
-                data={moneyScripts.map((d) => ({
-                  subject: d.subject,
-                  A: d.value,
+                data={moneyScripts?.map((d) => ({
+                  subject: d?.subject,
+                  A: d?.value,
                 }))}
               >
                 <PolarGrid />
@@ -190,8 +190,8 @@ export default function FinancialSelfAwarenessMap() {
               </p>
 
               <div className="space-y-2">
-                {moneyScripts.map((m) => (
-                  <div key={m.subject} className="flex items-center gap-3">
+                {moneyScripts?.map((m) => (
+                  <div key={m?.subject} className="flex items-center gap-3">
                     <div className="w-2 h-8 bg-slate-100 rounded-full flex items-center justify-center">
                       <div
                         className="w-2 h-2 rounded-full"
@@ -199,9 +199,12 @@ export default function FinancialSelfAwarenessMap() {
                       />
                     </div>
                     <div className="flex-1">
-                      <MiniLabel label={m.subject} value={`${m.value}/10`} />
+                      <MiniLabel
+                        label={m?.subject ?? ""}
+                        value={`${m?.value}/10`}
+                      />
                       <div className="mt-1">
-                        <ProgressBar value={m.value} />
+                        <ProgressBar value={m?.value ?? 0} />
                       </div>
                     </div>
                   </div>
@@ -256,7 +259,7 @@ export default function FinancialSelfAwarenessMap() {
           </div>
         </div>
 
-        {/* Center column: Core gauge */}
+        {/* Left column: Core gauge */}
         <div className="col-span-6 flex items-center justify-center">
           <div className="bg-white p-6 rounded-2xl shadow-sm flex flex-col items-center justify-center w-full h-full border border-slate-100">
             <CircularGauge value={msai} size={160} stroke={14} />
@@ -282,11 +285,11 @@ export default function FinancialSelfAwarenessMap() {
           </p>
 
           <div className="space-y-4">
-            {behavioral.map((b) => (
-              <div key={b.name} className="">
-                <MiniLabel label={b.name} value={`${b.value}/10`} />
+            {behavioral?.map((b) => (
+              <div key={b?.name} className="">
+                <MiniLabel label={b?.name ?? ""} value={`${b?.value}/10`} />
                 <div className="mt-2">
-                  <ProgressBar value={b.value} />
+                  <ProgressBar value={b?.value ?? 0} />
                 </div>
               </div>
             ))}
@@ -304,8 +307,8 @@ export default function FinancialSelfAwarenessMap() {
 
           <div className="w-full bg-slate-50 rounded-lg relative flex items-center justify-center">
             <Grid2D
-              x={attachment.avoidance}
-              y={attachment.anxiety}
+              x={attachment?.avoidance ?? 5}
+              y={attachment?.anxiety ?? 5}
               xLabels={["Lower Avoidance", "Higher Avoidance"]}
               yLabels={["Lower Anxiety", "Higher Anxiety"]}
             />
@@ -331,30 +334,42 @@ export default function FinancialSelfAwarenessMap() {
             </div>
             <div className="text-right">
               <div className="text-sm font-medium">Overall alignment</div>
-              <div className="text-2xl font-bold text-slate-900">68%</div>
+              <div className="text-2xl font-bold text-slate-900">
+                {data?.overallAlignment ?? "NaN"}%
+              </div>
             </div>
           </div>
 
           <div className="mt-4 grid grid-cols-3 gap-4">
             <div className="p-3 rounded-lg bg-slate-50">
               <div className="text-xs text-slate-500">Financial Confidence</div>
-              <div className="text-sm font-medium mt-1">60 / 90</div>
+              <div className="text-sm font-medium mt-1">
+                {data?.financialConfidence}%
+              </div>
               <div className="mt-2">
-                <ProgressBar value={6} />
+                <ProgressBar
+                  value={((data?.financialConfidence ?? 0) / 100) * 10}
+                />
               </div>
             </div>
             <div className="p-3 rounded-lg bg-slate-50">
               <div className="text-xs text-slate-500">Emotional Calm</div>
-              <div className="text-sm font-medium mt-1">55 / 85</div>
+              <div className="text-sm font-medium mt-1">
+                {data?.emotionalCalmness}%
+              </div>
               <div className="mt-2">
-                <ProgressBar value={5.5} />
+                <ProgressBar
+                  value={((data?.emotionalCalmness ?? 0) / 100) * 10}
+                />
               </div>
             </div>
             <div className="p-3 rounded-lg bg-slate-50">
               <div className="text-xs text-slate-500">Goal Clarity</div>
-              <div className="text-sm font-medium mt-1">70 / 95</div>
+              <div className="text-sm font-medium mt-1">
+                {data?.goalClarity}%
+              </div>
               <div className="mt-2">
-                <ProgressBar value={7} />
+                <ProgressBar value={((data?.goalClarity ?? 0) / 100) * 10} />
               </div>
             </div>
           </div>
@@ -363,17 +378,17 @@ export default function FinancialSelfAwarenessMap() {
             <div className="p-3 rounded-lg bg-white border border-slate-100">
               <div className="text-xs text-slate-500">Top Strengths</div>
               <ul className="mt-2 text-sm text-slate-700 list-disc list-inside">
-                <li>Future-focused planning</li>
-                <li>Reliable and detail-oriented</li>
-                <li>Strong vigilance helps catch risks</li>
+                {data.topStrengths?.map((s, i) => (
+                  <li key={i}>{s}</li>
+                ))}
               </ul>
             </div>
             <div className="p-3 rounded-lg bg-white border border-slate-100">
               <div className="text-xs text-slate-500">Primary Growth Edges</div>
               <ul className="mt-2 text-sm text-slate-700 list-disc list-inside">
-                <li>Tendency to avoid looking at accounts when stressed</li>
-                <li>Guilt around spending reduces enjoyment</li>
-                <li>Overcontrol can exhaust motivation</li>
+                {data.primaryGrowthEdges?.map((s, i) => (
+                  <li key={i}>{s}</li>
+                ))}
               </ul>
             </div>
           </div>

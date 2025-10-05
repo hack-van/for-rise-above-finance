@@ -8,7 +8,7 @@ const Grid2D: React.FC<{
 }> = ({ x, y, xLabels = ["Low", "High"], yLabels = ["Low", "High"] }) => {
   const [ref, setRef] = React.useState<HTMLDivElement | null>(null);
   const width = ref?.clientWidth ?? 0;
-  const height = width * 0.75; // 4:3 ratio
+  const height = width * 0.6;
   console.log("Grid2D width", width, height);
 
   // Map attachment coordinates for quadrant: x = avoidance (low->high left->right), y = anxiety (low->high bottom->top)
