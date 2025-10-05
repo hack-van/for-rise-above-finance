@@ -1,7 +1,7 @@
 import { getAPI } from "@/lib/api";
 import { queryClient } from "@/lib/queryClient";
 import { create } from "zustand";
-import { persist } from "zustand/middleware";
+import { persist, createJSONStorage } from "zustand/middleware";
 
 export type Role = "user" | "assistant";
 export type Message = {
@@ -49,6 +49,7 @@ export const useConversation = create<{
     {
       name: "conversation-storage",
       partialize: (state) => ({ messages: state.messages }),
+      storage: createJSONStorage(() => sessionStorage),
     }
   )
 );
