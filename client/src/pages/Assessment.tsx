@@ -13,10 +13,14 @@ export default function Assessment() {
   const [showInput, setShowInput] = useState(true);
   const [reportLink, setReportLink] = useState<string | null>(null);
   const [reportLinkLoading, setReportLinkLoading] = useState<boolean>(false);
-  const { messages, addMessage } = useConversation();
+  const { messages, addMessage, reset: resetConversation } = useConversation();
 
   const isCompleted =
-    messages.filter((m) => m.role === "user").length >= TOTAL_QUESTIONS;
+    messages.filter(
+      (m) =>
+        m.role === "assistant" &&
+        (!m.action || m.action === "ASK_NEXT_FALLBACK")
+    ).length >= TOTAL_QUESTIONS;
 
   const [isTyping, setIsTyping] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
@@ -49,8 +53,14 @@ export default function Assessment() {
             : // phase 4: 3 questions
               4
         }
-        questionNumber={messages.filter((m) => m.role === "user").length + 1}
+        questionNumber={Math.min(
+          messages.filter(
+            (m) => m.role === "assistant" && m.action === "ASK_NEXT_FALLBACK"
+          ).length + 1,
+          TOTAL_QUESTIONS
+        )}
         totalQuestions={TOTAL_QUESTIONS}
+        reset={resetConversation}
       />
 
       <div className="flex-1 overflow-y-auto">
@@ -87,7 +97,7 @@ export default function Assessment() {
           onSend={async (message) => {
             setIsTyping(true);
             try {
-              const response = await sendMessage(message);
+              const { message: response, action } = await sendMessage(message);
               if (isCompleted) {
                 (async () => {
                   // do not await
@@ -96,6 +106,7 @@ export default function Assessment() {
                   addMessage({
                     prompt: `Thank you for completing the assessment! We are currently generating your report. It will be available for download shortly.`,
                     role: "assistant",
+                    action: "END",
                   });
                   try {
                     const { url } = await generateReport();
@@ -109,6 +120,7 @@ export default function Assessment() {
                 addMessage({
                   prompt: response || "Sorry, something went wrong.",
                   role: "assistant",
+                  action: action,
                 });
               }
             } finally {

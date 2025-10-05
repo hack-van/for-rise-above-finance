@@ -1,19 +1,26 @@
 import { Progress } from "@/components/ui/progress";
+import { Button } from "./ui/button";
 
 const phases = [
   "Your Money Story",
-  "Current Reality", 
+  "Current Reality",
   "Vision & Motivation",
-  "Activation"
+  "Activation",
 ];
 
 interface PhaseIndicatorProps {
   currentPhase: number;
   questionNumber: number;
   totalQuestions: number;
+  reset?: () => void;
 }
 
-export function PhaseIndicator({ currentPhase, questionNumber, totalQuestions }: PhaseIndicatorProps) {
+export function PhaseIndicator({
+  currentPhase,
+  questionNumber,
+  totalQuestions,
+  reset,
+}: PhaseIndicatorProps) {
   const progress = (questionNumber / totalQuestions) * 100;
 
   return (
@@ -24,10 +31,19 @@ export function PhaseIndicator({ currentPhase, questionNumber, totalQuestions }:
             Phase {currentPhase} of 4: {phases[currentPhase - 1]}
           </div>
           <div className="text-sm text-muted-foreground">
-            Question {questionNumber} of {totalQuestions}
+            Question {questionNumber} of {totalQuestions}{" "}
+            {reset && (
+              <Button variant="link" size="sm" onClick={reset}>
+                Restart
+              </Button>
+            )}
           </div>
         </div>
-        <Progress value={progress} className="h-2" data-testid="progress-assessment" />
+        <Progress
+          value={progress}
+          className="h-2"
+          data-testid="progress-assessment"
+        />
       </div>
     </div>
   );

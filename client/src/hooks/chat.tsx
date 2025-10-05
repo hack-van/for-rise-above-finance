@@ -1,26 +1,57 @@
 import { getAPI } from "@/lib/api";
+import { queryClient } from "@/lib/queryClient";
 import { create } from "zustand";
+import { persist } from "zustand/middleware";
 
 export type Role = "user" | "assistant";
 export type Message = {
   prompt: string;
   role: Role;
+  action?: string;
 };
 
 export const useConversation = create<{
   messages: Array<Message>;
   addMessage: (message: Message) => void;
-}>((set) => ({
-  messages: [
+  reset: () => void;
+}>()(
+  persist(
+    (set) => ({
+      messages: [
+        {
+          prompt:
+            "Welcome! I'm here to help you understand your relationship with money. This is a safe, judgment-free space for honest reflection.\n\nLet's begin with your money story...",
+          role: "assistant",
+        },
+      ],
+      addMessage: (message: Message) =>
+        set((state) => ({ messages: [...state.messages, message] })),
+      reset: () => {
+        //queryClient.invalidateQueries(["metricReport"]);
+
+        set(() => ({
+          messages: [
+            {
+              prompt:
+                "Welcome! I'm here to help you understand your relationship with money. This is a safe, judgment-free space for honest reflection.\n\nLet's begin with your money story...",
+              role: "assistant",
+            },
+          ],
+        }));
+        queryClient.resetQueries({
+          queryKey: ["metricReport"],
+        });
+        queryClient.resetQueries({
+          queryKey: ["report"],
+        });
+      },
+    }),
     {
-      prompt:
-        "Welcome! I'm here to help you understand your relationship with money. This is a safe, judgment-free space for honest reflection.\n\nLet's begin with your money story...",
-      role: "assistant",
-    },
-  ],
-  addMessage: (message: Message) =>
-    set((state) => ({ messages: [...state.messages, message] })),
-}));
+      name: "conversation-storage",
+      partialize: (state) => ({ messages: state.messages }),
+    }
+  )
+);
 
 const fakeQuestions = [
   `What does financial success mean to you personally? (not what you think it "should" mean)`,
@@ -76,5 +107,5 @@ export async function sendMessage(message: string) {
   //await new Promise((resolve) => setTimeout(resolve, 1500));
   //const assistantMessage = "This is a placeholder response from the assistant.";
   //const assistantMessage = fakeQuestions[assistantMessages];
-  return assistantMessage;
+  return { message: assistantMessage, action: response.data?.action };
 }
