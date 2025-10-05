@@ -27,8 +27,6 @@ export const useConversation = create<{
       addMessage: (message: Message) =>
         set((state) => ({ messages: [...state.messages, message] })),
       reset: () => {
-        //queryClient.invalidateQueries(["metricReport"]);
-
         set(() => ({
           messages: [
             {
