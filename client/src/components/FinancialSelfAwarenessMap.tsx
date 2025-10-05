@@ -20,6 +20,7 @@ import { motion } from "framer-motion";
 import { Info } from "lucide-react";
 import { useMetricReport } from "@/hooks/metricReport";
 import Grid2D from "./Grid2D";
+import CaptureToPDF from "./CaptureToPDF";
 
 // ----------------------
 // Dummy data (replace with real answers)
@@ -126,7 +127,7 @@ export default function FinancialSelfAwarenessMap() {
   const { msai, moneyScripts, behavioral, emotions, attachment } = data;
 
   return (
-    <div className="p-6 max-w-5xl mx-auto">
+    <div className="p-6 max-w-5xl mx-auto" id="financial-self-awareness-map">
       <div className="flex items-center justify-between mb-6">
         <div>
           <h2 className="text-2xl font-semibold text-slate-900">
@@ -136,16 +137,13 @@ export default function FinancialSelfAwarenessMap() {
             A concise snapshot of what's shaping your financial life
           </p>
         </div>
-        {/*
+
         <div className="flex gap-3 items-center">
-          <button className="flex items-center gap-2 px-4 py-2 rounded-lg bg-white border border-slate-200 shadow-sm text-sm">
-            <Info size={16} /> Export PDF
-          </button>
-          <button className="px-4 py-2 rounded-lg bg-slate-900 text-white text-sm">
-            Download Data
-          </button>
+          <CaptureToPDF
+            id="financial-self-awareness-map"
+            filename="report.pdf"
+          />
         </div>
-        */}
       </div>
 
       <motion.div
