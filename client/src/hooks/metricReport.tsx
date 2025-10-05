@@ -28,6 +28,9 @@ export async function generateMetricReport(): Promise<MetricReport> {
   //const response = await api.post<MetricReport>("/engine/metric-report", {
   //  messages: useConversation.getState().messages,
   //});
+  //return response.data;
+
+  // Mocked data for development purposes
 
   return {
     overallAlignment: 68, // Overall alignment score (0-100)
