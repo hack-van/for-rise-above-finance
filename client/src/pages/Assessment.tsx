@@ -83,7 +83,7 @@ export default function Assessment() {
           {isTyping && (
             <MessageBubble message="" isUser={false} isTyping={true} />
           )}
-          {(isCompleted || true) && (
+          {isCompleted && (
             <div className="mt-6 rounded-xl border border-zinc-200 bg-white p-6 shadow-sm dark:border-zinc-800 dark:bg-zinc-900">
               <FinancialSelfAwarenessMap />
             </div>
