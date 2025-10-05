@@ -25,7 +25,7 @@ export type MetricReport = RecursivePartial<{
 
 export async function generateMetricReport(): Promise<MetricReport> {
   const api = await getAPI();
-  //const response = await api.post<ArrayBuffer>("/engine/metric-report", {
+  //const response = await api.post<MetricReport>("/engine/metric-report", {
   //  messages: useConversation.getState().messages,
   //});
 
