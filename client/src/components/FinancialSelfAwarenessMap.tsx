@@ -408,6 +408,126 @@ export default function FinancialSelfAwarenessMap() {
           <div className="text-sm text-slate-700">
             {data.interpretation?.actionStep}
           </div>
+          <div className="mt-6 text-xs text-slate-400 space-y-1">
+            <h3 className="text-sm font-medium text-slate-900 mb-2">
+              Metric Definitions{" "}
+              <Info className="inline-block align-middle" size={14} />
+            </h3>
+            <div className="flex items-start gap-2">
+              <span className="inline-block w-56 shrink-0 whitespace-nowrap font-medium text-slate-600">
+                Financial Confidence
+              </span>
+              <span>– Belief in your ability to manage money.</span>
+            </div>
+            <div className="flex items-start gap-2">
+              <span className="inline-block w-56 shrink-0 whitespace-nowrap font-medium text-slate-600">
+                Planning
+              </span>
+              <span>– Habit of creating and following financial plans.</span>
+            </div>
+            <div className="flex items-start gap-2">
+              <span className="inline-block w-56 shrink-0 whitespace-nowrap font-medium text-slate-600">
+                Future Orientation
+              </span>
+              <span>– Focus on long-term goals vs. short-term wants.</span>
+            </div>
+            <div className="flex items-start gap-2">
+              <span className="inline-block w-56 shrink-0 whitespace-nowrap font-medium text-slate-600">
+                Overall Alignment
+              </span>
+              <span>– How well money choices match personal values.</span>
+            </div>
+            <div className="flex items-start gap-2">
+              <span className="inline-block w-56 shrink-0 whitespace-nowrap font-medium text-slate-600">
+                Control vs Flow
+              </span>
+              <span>– Balance between control and flexibility with money.</span>
+            </div>
+            <div className="flex items-start gap-2">
+              <span className="inline-block w-56 shrink-0 whitespace-nowrap font-medium text-slate-600">
+                Avoidance
+              </span>
+              <span>– Tendency to ignore or avoid money matters.</span>
+            </div>
+            <div className="flex items-start gap-2">
+              <span className="inline-block w-56 shrink-0 whitespace-nowrap font-medium text-slate-600">
+                Worship
+              </span>
+              <span>– Belief that money solves all problems.</span>
+            </div>
+            <div className="flex items-start gap-2">
+              <span className="inline-block w-56 shrink-0 whitespace-nowrap font-medium text-slate-600">
+                Status
+              </span>
+              <span>– Linking self-worth to wealth or possessions.</span>
+            </div>
+            <div className="flex items-start gap-2">
+              <span className="inline-block w-56 shrink-0 whitespace-nowrap font-medium text-slate-600">
+                Vigilance
+              </span>
+              <span>– Hyper-alertness or worry about financial mistakes.</span>
+            </div>
+            <div className="flex items-start gap-2">
+              <span className="inline-block w-56 shrink-0 whitespace-nowrap font-medium text-slate-600">
+                Goal Clarity
+              </span>
+              <span>– How clear your financial goals are.</span>
+            </div>
+            <div className="flex items-start gap-2">
+              <span className="inline-block w-56 shrink-0 whitespace-nowrap font-medium text-slate-600">
+                Empowerment
+              </span>
+              <span>– Feeling capable of changing your financial life.</span>
+            </div>
+            <div className="flex items-start gap-2">
+              <span className="inline-block w-56 shrink-0 whitespace-nowrap font-medium text-slate-600">
+                Emotions Anxiety
+              </span>
+              <span>– Fear or tension around finances.</span>
+            </div>
+            <div className="flex items-start gap-2">
+              <span className="inline-block w-56 shrink-0 whitespace-nowrap font-medium text-slate-600">
+                Emotions Guilt
+              </span>
+              <span>– Regret or shame over money actions.</span>
+            </div>
+            <div className="flex items-start gap-2">
+              <span className="inline-block w-56 shrink-0 whitespace-nowrap font-medium text-slate-600">
+                Attachment Anxiety
+              </span>
+              <span>– Fear of losing financial security.</span>
+            </div>
+            <div className="flex items-start gap-2">
+              <span className="inline-block w-56 shrink-0 whitespace-nowrap font-medium text-slate-600">
+                Attachment Avoidance
+              </span>
+              <span>– Emotional distance or detachment from money.</span>
+            </div>
+            <div className="flex items-start gap-2">
+              <span className="inline-block w-56 shrink-0 whitespace-nowrap font-medium text-slate-600">
+                Behavioral Planning
+              </span>
+              <span>– Consistency in acting on financial plans.</span>
+            </div>
+            <div className="flex items-start gap-2">
+              <span className="inline-block w-56 shrink-0 whitespace-nowrap font-medium text-slate-600">
+                Risk Tolerance
+              </span>
+              <span>– Comfort with uncertainty or loss.</span>
+            </div>
+            <div className="flex items-start gap-2">
+              <span className="inline-block w-56 shrink-0 whitespace-nowrap font-medium text-slate-600">
+                Scarcity vs Abundance
+              </span>
+              <span>– Mindset of limitation vs. opportunity.</span>
+            </div>
+            <div className="flex items-start gap-2">
+              <span className="inline-block w-56 shrink-0 whitespace-nowrap font-medium text-slate-600">
+                Readiness
+              </span>
+              <span>– Motivation to improve financial habits.</span>
+            </div>
+          </div>
         </div>
       </motion.div>
     </div>
