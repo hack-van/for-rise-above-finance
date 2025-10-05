@@ -171,7 +171,7 @@ export default function FinancialSelfAwarenessMap() {
                   dataKey="subject"
                   tick={{ fill: "#0f172a", fontSize: 11 }}
                 />
-                <PolarRadiusAxis angle={30} domain={[0, 10]} tick={false} />
+                <PolarRadiusAxis angle={0} domain={[0, 10]} tick={false} />
                 <Radar
                   name="scripts"
                   dataKey="A"
@@ -238,7 +238,7 @@ export default function FinancialSelfAwarenessMap() {
                     strokeWidth="8"
                     fill="none"
                     strokeDasharray={`${
-                      (emotions.Anxiety / 10) * (2 * Math.PI * 28)
+                      (emotions?.Anxiety ?? 0 / 10) * (2 * Math.PI * 28)
                     } ${2 * Math.PI * 28}`}
                     strokeLinecap="round"
                     transform="rotate(-90 36 36)"
@@ -248,11 +248,11 @@ export default function FinancialSelfAwarenessMap() {
               <div>
                 <div className="text-sm text-slate-700">Anxiety-driven</div>
                 <div className="text-xs text-slate-500">
-                  Intensity: {emotions.Anxiety}/10
+                  Intensity: {emotions?.Anxiety}/10
                 </div>
                 <div className="mt-2 text-sm text-slate-500">
-                  Sub-drivers: Guilt {emotions.Guilt}/10 · Empowerment{" "}
-                  {emotions.Empowerment}/10
+                  Sub-drivers: Guilt {emotions?.Guilt}/10 · Empowerment{" "}
+                  {emotions?.Empowerment}/10
                 </div>
               </div>
             </div>
