@@ -21,6 +21,11 @@ export type MetricReport = RecursivePartial<{
   financialConfidence: number; // Financial confidence score (0-100)
   emotionalCalmness: number; // Emotional calmness score (0-100)
   goalClarity: number; // Goal clarity score (0-100)
+  interpretation: {
+    actionStep: string;
+    keyConflict: string;
+    summary: string;
+  };
 }>;
 
 export async function generateMetricReport(): Promise<MetricReport> {

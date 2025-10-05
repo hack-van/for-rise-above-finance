@@ -391,6 +391,24 @@ export default function FinancialSelfAwarenessMap() {
             </div>
           </div>
         </div>
+        <div className="col-span-12 bg-white rounded-2xl p-5 shadow-sm border border-slate-100 mt-2">
+          <h3 className="text-lg font-medium text-slate-900 mb-2">Summary</h3>
+          <div className="text-sm text-slate-700">
+            {data.interpretation?.summary}
+          </div>
+          <h3 className="text-lg font-medium text-slate-900 mb-2 mt-4">
+            Key Conflict
+          </h3>
+          <div className="text-sm text-slate-700">
+            {data.interpretation?.keyConflict}
+          </div>
+          <h3 className="text-lg font-medium text-slate-900 mb-2 mt-4">
+            Suggested Action Step
+          </h3>
+          <div className="text-sm text-slate-700">
+            {data.interpretation?.actionStep}
+          </div>
+        </div>
       </motion.div>
     </div>
   );
