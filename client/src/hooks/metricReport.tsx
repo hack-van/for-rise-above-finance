@@ -25,45 +25,10 @@ export type MetricReport = RecursivePartial<{
 
 export async function generateMetricReport(): Promise<MetricReport> {
   const api = await getAPI();
-  //const response = await api.post<MetricReport>("/engine/metric-report", {
-  //  messages: useConversation.getState().messages,
-  //});
-  //return response.data;
-
-  // Mocked data for development purposes
-
-  return {
-    overallAlignment: 68, // Overall alignment score (0-100)
-    msai: 72, // Money Self-Awareness Index (0-100)
-    moneyScripts: [
-      { subject: "Avoidance", value: 8 },
-      { subject: "Worship", value: 3 },
-      { subject: "Status", value: 5 },
-      { subject: "Vigilance", value: 7 },
-    ],
-    behavioral: [
-      { name: "Planning", value: 7 },
-      { name: "Risk Tolerance", value: 4 },
-      { name: "Future Orientation", value: 8 },
-      { name: "Scarcity vs Abundance", value: 5 },
-      { name: "Control vs Flow", value: 6 },
-    ],
-    emotions: { Anxiety: 7, Guilt: 6, Empowerment: 5 },
-    attachment: { anxiety: 6, avoidance: 6 },
-    topStrengths: [
-      "Future-focused planning",
-      "Reliable and detail-oriented",
-      "Strong vigilance helps catch risks",
-    ],
-    primaryGrowthEdges: [
-      "Tendency to avoid looking at accounts when stressed",
-      "Guilt around spending reduces enjoyment",
-      "Overcontrol can exhaust motivation",
-    ],
-    financialConfidence: 75, // Financial confidence score (0-100)
-    emotionalCalmness: 60, // Emotional calmness score (0-100)
-    goalClarity: 85, // Goal clarity score (0-100)
-  };
+  const response = await api.post<MetricReport>("/engine/metrics", {
+    messages: useConversation.getState().messages,
+  });
+  return response.data;
 }
 
 export function useMetricReport() {
