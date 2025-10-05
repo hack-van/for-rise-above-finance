@@ -2,11 +2,10 @@ import { useState, useEffect, useRef } from "react";
 import { PhaseIndicator } from "@/components/PhaseIndicator";
 import { MessageBubble } from "@/components/MessageBubble";
 import { ChatInput } from "@/components/ChatInput";
-import { Button } from "@/components/ui/button";
-import { useLocation } from "wouter";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { sendMessage, useConversation } from "@/hooks/chat";
 import { generateReport } from "@/hooks/report";
+import MetricReportRendering from "@/components/MetricReportRendering";
 
 const TOTAL_QUESTIONS = 30;
 
@@ -15,6 +14,9 @@ export default function Assessment() {
   const [reportLink, setReportLink] = useState<string | null>(null);
   const [reportLinkLoading, setReportLinkLoading] = useState<boolean>(false);
   const { messages, addMessage } = useConversation();
+
+  const isCompleted =
+    messages.filter((m) => m.role === "user").length >= TOTAL_QUESTIONS;
 
   const [isTyping, setIsTyping] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
@@ -71,6 +73,11 @@ export default function Assessment() {
           {isTyping && (
             <MessageBubble message="" isUser={false} isTyping={true} />
           )}
+          {(isCompleted || true) && (
+            <div className="mt-6 rounded-xl border border-zinc-200 bg-white p-6 shadow-sm dark:border-zinc-800 dark:bg-zinc-900">
+              <MetricReportRendering />
+            </div>
+          )}
           <div ref={messagesEndRef} />
         </div>
       </div>
@@ -81,10 +88,7 @@ export default function Assessment() {
             setIsTyping(true);
             try {
               const response = await sendMessage(message);
-              const isConversationDone =
-                messages.filter((m) => m.role === "user").length + 1 >=
-                TOTAL_QUESTIONS;
-              if (isConversationDone) {
+              if (isCompleted) {
                 (async () => {
                   // do not await
                   setShowInput(false);
