@@ -2,8 +2,14 @@ import axios from "axios";
 
 console.log("API Base URL:", import.meta.env.VITE_API_BASE_URL);
 
+if (!import.meta.env.VITE_API_BASE_URL) {
+  console.error(
+    "VITE_API_BASE_URL is not defined in the environment variables."
+  );
+}
+
 const instance = axios.create({
-  baseURL: import.meta.env.VITE_API_BASE_URL || "http://127.0.0.1:5000/api/",
+  baseURL: import.meta.env.VITE_API_BASE_URL,
   headers: {
     "Content-Type": "application/json",
   },
