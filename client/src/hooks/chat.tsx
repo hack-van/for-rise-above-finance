@@ -7,6 +7,7 @@ export type Role = "user" | "assistant";
 export type Message = {
   prompt: string;
   role: Role;
+  legit: boolean;
 };
 
 export const useConversation = create<{
@@ -21,6 +22,7 @@ export const useConversation = create<{
           prompt:
             "Welcome! I'm here to help you understand your relationship with money. This is a safe, judgment-free space for honest reflection.\n\nLet's begin with your money story...",
           role: "assistant",
+            legit: true,
         },
       ],
       addMessage: (message: Message) =>
@@ -32,6 +34,7 @@ export const useConversation = create<{
               prompt:
                 "Welcome! I'm here to help you understand your relationship with money. This is a safe, judgment-free space for honest reflection.\n\nLet's begin with your money story...",
               role: "assistant",
+                legit: true,
             },
           ],
         }));
@@ -89,11 +92,11 @@ export async function sendMessage(message: string) {
       .length - 1;
 
   useConversation.setState((state) => ({
-    messages: [...state.messages, { prompt: message, role: "user" }],
+    messages: [...state.messages, { prompt: message, role: "user", legit: true }],
   }));
   const api = await getAPI();
   const response = await api.post<{
-    reply: string;
+    reply: { response: string, legit: boolean };
   }>("/engine/next", {
     mode: "neutral",
     messages: useConversation.getState().messages,
@@ -104,5 +107,5 @@ export async function sendMessage(message: string) {
   //await new Promise((resolve) => setTimeout(resolve, 1500));
   //const assistantMessage = "This is a placeholder response from the assistant.";
   //const assistantMessage = fakeQuestions[assistantMessages];
-  return { message: assistantMessage };
+  return { answer: assistantMessage };
 }
