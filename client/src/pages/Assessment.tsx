@@ -50,7 +50,7 @@ export default function Assessment() {
               4
         }
         questionNumber={Math.min(
-          messages.filter((m) => m.role === "assistant").length,
+          messages.filter((m) => m.role === "assistant" && m.legit).length,
           TOTAL_QUESTIONS
         )}
         totalQuestions={TOTAL_QUESTIONS}
@@ -93,9 +93,9 @@ export default function Assessment() {
           onSend={async (message) => {
             setIsTyping(true);
             try {
-              const { message: response } = await sendMessage(message);
+              const { answer } = await sendMessage(message);
               const isCompleted =
-                messages.filter((m) => m.role === "assistant").length >=
+                messages.filter((m) => m.role === "assistant" && m.legit).length >=
                 TOTAL_QUESTIONS;
               if (isCompleted) {
                 (async () => {
@@ -103,8 +103,9 @@ export default function Assessment() {
                   setShowInput(false);
                   setReportLinkLoading(true);
                   addMessage({
-                    prompt: `Thank you for completing the assessment! We are currently generating your report. It will be available for download shortly.`,
-                    role: "assistant",
+                      prompt: `Thank you for completing the assessment! We are currently generating your report. It will be available for download shortly.`,
+                      role: "assistant",
+                      legit: true
                   });
                   try {
                     const { url } = await generateReport();
@@ -116,8 +117,9 @@ export default function Assessment() {
                 })();
               } else {
                 addMessage({
-                  prompt: response || "Sorry, something went wrong.",
-                  role: "assistant",
+                    prompt: answer.response || "Sorry, something went wrong.",
+                    role: "assistant",
+                    legit: answer.legit
                 });
               }
             } finally {
