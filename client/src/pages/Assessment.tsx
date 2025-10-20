@@ -16,7 +16,7 @@ export default function Assessment() {
   const { messages, addMessage, reset: resetConversation } = useConversation();
 
   const isCompleted =
-    messages.filter((m) => m.role === "assistant").length > TOTAL_QUESTIONS;
+    messages.filter((m) => m.role === "assistant" && m.legit).length > TOTAL_QUESTIONS;
 
   const [isTyping, setIsTyping] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
